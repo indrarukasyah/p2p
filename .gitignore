@@ -3,7 +3,7 @@
 *.pyc
 media/
 localsettings.py
-#v Created by https://www.gitignore.io
+# Created by https://www.gitignore.io
 
 ### OSX ###
 .DS_Store
