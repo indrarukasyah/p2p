@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponse
+from .models import *
 
 def homepage(request):
-    """Simple homepage View """
-    return HttpResponse('Homepage')
+    slides = Slider.objects.all()
+    data = {"slides":slides}
+    return render(request,'main/index.html',data)
 

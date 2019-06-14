@@ -1,1 +1,152 @@
 {% extends 'admin/dasboard_base.html' %}
+{% load static %}
+{% load i18n static %}
+{% block content %}
+
+<!-- begin:: Header Mobile -->
+
+
+		<!-- end:: Header Mobile -->
+<div class="kt-grid kt-grid--hor kt-grid--root">
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+        <!-- begin:: Aside -->
+        {% include 'admin/aside.html' %}
+
+        <!-- end:: Aside -->
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+            <!-- begin:: Header -->
+            {% include "admin/header.html" %}
+
+            <!-- end:: Header -->
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+                <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+                <div class="row">
+                    <div class="col-xl-4">
+                        <!--begin:: Models List -->
+                            {% if app_list %}
+                            {% for app in app_list %}
+                                <div class="kt-portlet kt-portlet--height-fluid {{ app.name }}">
+                                    <div class="kt-portlet__head">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title">
+                                                    {{ app.name }}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="kt-portlet__body">
+                                        <div class="kt-widget4">
+                                        {% for model in app.models %}
+                                             <div class="kt-widget4__item">
+                                                <span class="kt-widget4__icon">
+                                                    <i class="flaticon-pie-chart-1 kt-font-info"></i>
+                                                </span>
+                                             {% if model.admin_url %}
+                                                <a href="{{ model.admin_url }}" class="kt-widget4__title
+                                                kt-widget4__title--light">
+                                                    {{ model.name }}
+                                                </a>
+                                             {% endif %}
+                                                <span class="kt-widget4__number kt-font-info">
+                                                    <a href="{{ model.add_url }}">
+                                                        {% trans 'Add' %}</a> |
+
+                                                    <a href="{{ model.admin_url }}">
+                                                        {% trans 'Change' %}
+                                                    </a>
+
+                                                </span>
+                                            </div>
+                                        {% endfor %}
+
+                                        </div>
+
+                                        <!--end::Widget 12-->
+                                    </div>
+
+
+
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            <!--end:: Models List -->
+                    </div>
+                    <!--begin:: Recent actions -->
+                    <div class="col-xl-4">
+
+                            <!--begin:: Widgets/Audit Log-->
+                            <div class="kt-portlet kt-portlet--height-fluid">
+                                <div class="kt-portlet__head">
+                                    <div class="kt-portlet__head-label">
+                                        <h3 class="kt-portlet__head-title">
+                                            {% trans 'Recent actions' %}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="kt-portlet__body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="kt_widget4_tab11_content">
+                                            <div class="kt-scroll" data-scroll="true" data-height="400"
+                                                 style="height: 400px;">
+                                                {% load log %}
+                                                {% get_admin_log 10 as admin_log for_user user %}
+                                                {% if not admin_log %}
+                                                <p>{% trans 'None available' %}</p>
+                                                {% else %}
+                                                    {% for entry in admin_log %}
+                                                <div class="kt-list-timeline">
+                                                    <div class="kt-list-timeline__items">
+                                                        <div class="kt-list-timeline__item">
+                                                            <span class="kt-list-timeline__badge
+                                                            {% if entry.is_addition %}
+                                                            kt-list-timeline__badge--success
+                                                            {% endif %}
+                                                            {% if entry.is_change %}
+                                                            kt-list-timeline__badge--info
+                                                            {% endif %}
+                                                            {% if entry.is_deletion %}
+                                                            kt-list-timeline__badge--danger
+                                                            {% endif %}
+                                                            "></span>
+                                                            <span class="kt-list-timeline__text">
+                                                                {{ entry.object_repr }}
+                                                               {% if entry.content_type %}
+                                                                    {% filter capfirst %}
+                                                                      <sub class="model-admin-sub">{{ entry.content_type }}</sub>
+                                                                    {% endfilter %}
+                                                                {% else %}
+                                                                    <sub>{% trans 'Unknown content' %}<sub>
+                                                               {% endif %}
+
+
+                                                            </span>
+
+                                                            <span class="kt-list-timeline__time action_time">
+                                                                {{ entry.action_time }}</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end:: Widgets/Audit Log-->
+                        </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- begin:: Footer -->
+
+
+            <!-- end:: Footer -->
+        </div>
+    </div>
+</div>
+{% endblock %}
