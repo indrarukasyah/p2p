@@ -139,6 +139,13 @@
 	left: 0;
 	top: 0;
 }
+
+  h3.kt-portlet__head-title li {
+    list-style: none;
+}
+a.kt-widget4__title.kt-widget4__title--light h3 {
+    display: none;
+}
 </style>
 </head>
 
@@ -255,7 +262,8 @@
 
 		<!--begin::Page Scripts(used by this page) -->
 		<script src="{% static 'dashboard/assets/js/demo6/pages/dashboard.js' %}" type="text/javascript"></script>
-
+    {% block scripts %}
+    {% endblock %}
 		<!--end::Page Scripts -->
 	</body>
 

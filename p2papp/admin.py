@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import Slider
 
-# Register your models here.
 
-admin.site.register(Slider)
+class SliderC(admin.ModelAdmin):
+    list_filter = ('layer_one',)
+
+
+admin.site.register(Slider,SliderC)
