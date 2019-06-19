@@ -1,0 +1,19 @@
+
+{% for choice in choices %}
+    <div class="kt-widget4__item">
+        <span class="kt-widget4__icon">
+            <i class="flaticon2-file kt-font-success"></i>
+        </span>
+        <a href="{{ choice.query_string }}" class="kt-widget4__title
+         kt-widget4__title--light"
+        {% if choice.selected %} style="
+    color: #5bccbb;
+"{% endif %}>
+            {{ choice.display }}
+
+        </a>
+        {% if choice.selected %}
+            <span class="kt-widget4__number kt-font-success">&#10004;</span>
+        {% endif %}
+    </div>
+{% endfor %}
