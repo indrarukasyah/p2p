@@ -4,7 +4,7 @@ from django.contrib.admin.views.main import ChangeList
 
 class SliderC(admin.ModelAdmin):
     list_filter = ('layer_one',)
-    list_display = ('layer_one','layerone_span','layer_two')
+    list_display = ('layer_one','layerone_span','layer_two','layer_two_span')
 
 
 admin.site.register(Slider,SliderC)
