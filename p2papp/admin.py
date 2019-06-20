@@ -7,6 +7,4 @@ class SliderC(admin.ModelAdmin):
     list_display = ('layer_one','layerone_span','layer_two')
 
 
-
-
 admin.site.register(Slider,SliderC)

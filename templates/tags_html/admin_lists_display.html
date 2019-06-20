@@ -1,206 +1,76 @@
 {% load customtags %}
-<div class="kt-portlet__body">
-
-                                    <!--Begin::Tab Content-->
+{# if list display enabled #}
+{% if LD %}
+    <div class="kt-portlet__body">
     <div class="tab-content">
-
-        <!--begin::tab 1 content-->
         <div class="tab-pane active" id="kt_widget11_tab1_content">
-
-            <!--begin::Widget 11-->
             <div class="kt-widget11">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <td style="width:1%">#</td>
-                                <td style="width:40%">Application</td>
-                                <td style="width:14%">Sales</td>
-                                <td style="width:15%">Change</td>
-                                <td style="width:15%">Status</td>
-                                <td style="width:15%"
-                                    class="kt-align-right">Total</td>
+
+                               {% for name in  display %}
+                                   {% if name != 'action_checkbox' %}
+                                        <td style="width:1%">
+                                                {% cooltitle name %}
+                                        </td>
+                                   {% endif %}
+                                {% endfor %}
                             </tr>
                         </thead>
                         <tbody>
                         {% for query in queryset %}
                             <tr>
-{#                                <td>#}
-{#                                    <label class="kt-checkbox#}
-{#                                    kt-checkbox--single">#}
-{#                                        <input type="checkbox">#}
-{#                                        <span></span>#}
-{#                                    </label>#}
-{#                                </td>#}
                                 {% for name in  display %}
-                                <td class="kt-align-right kt-font-brand
-                                kt-font-bold">
-                                {% show_list_name query name %}
-                                </td>
+                                    {% if name != 'action_checkbox' %}
+                                        <td class="">
+                                            <a href="{% coolurl query %}">
+                                                {% show_list_name query name %}
+                                            </a>
+                                        </td>
+                                    {% endif %}
                                 {% endfor %}
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="kt-widget11__action kt-align-right">
-                    <button type="button"
-                            class="btn btn-label-brand btn-bold btn-sm">
-                        Import Report
-                    </button>
-                </div>
             </div>
-
-            <!--end::Widget 11-->
         </div>
-
-        <!--end::tab 1 content-->
-
-        <!--begin::tab 2 content-->
-        <div class="tab-pane" id="kt_widget11_tab2_content">
-
-            <!--begin::Widget 11-->
+    </div>
+</div>
+{% else %}
+{#   if list display is not activated #}
+    <div class="kt-portlet__body">
+    <div class="tab-content">
+        <div class="tab-pane active" id="kt_widget11_tab1_content">
             <div class="kt-widget11">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <td style="width:1%">#</td>
-                                <td style="width:40%">Application</td>
-                                <td style="width:14%">Sales</td>
-                                <td style="width:15%">Change</td>
-                                <td style="width:15%">Status</td>
-                                <td style="width:15%" class="kt-align-right">Total</td>
+                                <td style="width:1%">{% cooltitle title %}</td>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for query in queryset %}
                             <tr>
-                                <td>
-                                    <label class="kt-checkbox kt-checkbox--single">
-                                        <input type="checkbox"><span></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <span class="kt-widget11__title">Loop</span>
-                                    <span class="kt-widget11__sub">CRM System</span>
-                                </td>
-                                <td>19,200</td>
-                                <td>$63</td>
-                                <td>
-                                    <span class="kt-badge kt-badge--inline
-                                    kt-badge--danger">
-                                        pending
-                                    </span>
-                                </td>
-                                <td class="kt-align-right kt-font-brand
-                                kt-font-bold">
-                                    $23,740
-                                </td>
+                                {% for name in  display %}
+                                    {% if name != 'action_checkbox' %}
+                                        <td class="">
+                                        {{ query }}
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
                             </tr>
-                            <tr>
-                                <td>
-                                    <label class="kt-checkbox
-                                    kt-checkbox--single">
-                                        <input type="checkbox"><span></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <span class="kt-widget11__title">Selto</span>
-                                    <span class="kt-widget11__sub">
-                                        Powerful Website Builder
-                                    </span>
-                                </td>
-                                <td>24,310</td>
-                                <td>$39</td>
-                                <td>
-                                    <span class="kt-badge kt-badge--inline
-                                     kt-badge--success">
-                                        new
-                                    </span>
-                                </td>
-                                <td class="kt-align-right kt-font-success
-                                kt-font-bold">
-                                    $46,010
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="kt-checkbox
-                                    kt-checkbox--single">
-                                        <input type="checkbox">
-                                        <span></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <span class="kt-widget11__title">Jippo</span>
-                                    <span class="kt-widget11__sub">
-                                        The Best Selling App
-                                    </span>
-                                </td>
-                                <td>9,076</td>
-                                <td>$105</td>
-                                <td>
-                                    <span class="kt-badge kt-badge--inline
-                                    kt-badge--brand">
-                                        approved
-                                    </span>
-                                </td>
-                                <td class="kt-align-right kt-font-danger
-                                kt-font-bold">
-                                    $15,800
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="kt-checkbox
-                                     kt-checkbox--single">
-                                        <input type="checkbox">
-                                        <span></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <span class="kt-widget11__title">
-                                        Verto
-                                    </span>
-                                    <span class="kt-widget11__sub">
-                                        Web Development Tool
-                                    </span>
-                                </td>
-                                <td>11,094</td>
-                                <td>$16</td>
-                                <td>
-                                    <span class="kt-badge kt-badge--inline
-                                    kt-badge--info">done
-                                    </span>
-                                </td>
-                                <td class="kt-align-right kt-font-warning
-                                kt-font-bold">
-                                    $8,520
-                                </td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="kt-widget11__action kt-align-right">
-
-                    <button type="button" class="btn btn-label-success btn-bold
-                    btn-sm">
-                        Generate Report
-                    </button>
-                </div>
             </div>
-
-            <!--end::Widget 11-->
         </div>
 
-        <!--end::tab 2 content-->
-
-        <!--begin::tab 3 content-->
-        <div class="tab-pane" id="kt_widget11_tab3_content">
-        </div>
-
-        <!--end::tab 3 content-->
     </div>
-
-    <!--End::Tab Content-->
 </div>
+{% endif %}

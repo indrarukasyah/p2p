@@ -2,7 +2,7 @@ from django.db import models
 
 class Slider(models.Model):
     image = models.ImageField()
-    layer_one = models.CharField(max_length=200,blank=True,null=True)
+    layer_one = models.CharField(max_length=200,blank=True,null=True,verbose_name='Name')
     layerone_span = models.CharField(max_length=200,blank=True,null=True)
     layer_two = models.CharField(max_length=200,blank=True,null=True)
     layer_two_span = models.CharField(max_length=200,blank=True,null=True)
