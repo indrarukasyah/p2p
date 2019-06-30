@@ -59,7 +59,9 @@
                                 {% for name in  display %}
                                     {% if name != 'action_checkbox' %}
                                         <td class="">
-                                        {{ query }}
+                                            <a href="{% coolurl query %}">
+                                                 {{ query }}
+                                            </a>
                                         </td>
                                     {% endif %}
                                 {% endfor %}

@@ -24,7 +24,6 @@ def admin_lists_display(context):
         return render_to_string('tags_html/admin_lists_display.html', data)
 
     else:
-        # print(dir(context))
         title = context.model._meta.object_name
         data = {'title':title,'display': context.list_display, 'queryset': context.queryset, 'LD': False}
         return render_to_string('tags_html/admin_lists_display.html', data)
@@ -46,3 +45,7 @@ def cooltitle(name):
 @register.simple_tag
 def coolurl(name):
     return name.id.__str__()+'/change/'
+
+@register.simple_tag
+def scale_percentage(donate,goal):
+    return int(donate / goal * 100)
