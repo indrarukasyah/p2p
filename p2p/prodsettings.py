@@ -8,3 +8,5 @@ DATABASES = {
         'PORT': '25060',
     }
 }
+
+STATIC_ROOT = '/static/'

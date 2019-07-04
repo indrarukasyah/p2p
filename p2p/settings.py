@@ -6,7 +6,7 @@ SECRET_KEY = 'a*_#0oe23ddhr!(9)*928*wct-rqprug4a@uag0e95_#(hoi54'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['167.99.68.153','127.0.0.1:8000','127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -77,9 +77,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
