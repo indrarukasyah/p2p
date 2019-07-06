@@ -32,13 +32,13 @@ def Mailgun_send_email(to,subject,text,html):
 
 
 def TEXT(secret):
-    return f'http://127.0.0.1:8000/accounts/activate/{secret}'
+    return 'http://127.0.0.1:8000/accounts/activate/'+secret
 
 def HTML(secret):
-    return f'<h5><a href="http://127.0.0.1:8000/accounts/activate/{secret}">Click here to activate account</a></h5>'
+    return '<h5><a href="http://127.0.0.1:8000/accounts/activate/'+secret+">Click here to activate account</a></h5>"
 
 def ResetTEXT(secret):
-    return f'http://127.0.0.1:8000/accounts/reset_password/{secret}'
+    return 'http://127.0.0.1:8000/accounts/reset_password/'+secret
 
 def ResetHTML(secret):
-    return f'<h5><a href="http://127.0.0.1:8000/accounts/reset_password/{secret}">Click here to reset yourpassword</a></h5>'
+    return '<h5><a href="http://127.0.0.1:8000/accounts/reset_password/'+secret+">Click here to reset yourpassword</a></h5>"
