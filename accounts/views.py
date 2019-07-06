@@ -162,7 +162,7 @@ def loginuser(request,secret_message=''):
                 else:
                     errors['password'] = 'Wrong Password !'
             except:
-                errors['username_email'] = f"Email address doesn't exists."
+                errors['username_email'] = "Email address doesn't exists."
         else:
 
             try:
@@ -178,7 +178,7 @@ def loginuser(request,secret_message=''):
                 else:
                     errors['password'] = 'Wrong Password !'
             except:
-                errors['username_email'] = f"Username doesn't exists."
+                errors['username_email'] = "Username doesn't exists."
 
 
         return render(request, 'accounts/login.html', errors)
@@ -204,14 +204,14 @@ def resetpassword(request):
                 user =  User.objects.get(email=username_email)
             except:
                 user = None
-                errors['username_email'] = f"Email address doesn't exists."
+                errors['username_email'] = "Email address doesn't exists."
         else:
             try:
                 # check for valid username
                 user =  User.objects.get(username=username_email)
             except:
                 user = None
-                errors['username_email'] = f"Username doesn't exists."
+                errors['username_email'] = "Username doesn't exists."
 
         if user:
             #if email or username exists
