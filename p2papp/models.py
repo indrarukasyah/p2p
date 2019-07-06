@@ -1,7 +1,9 @@
 from django.db import models
 from django.db.models import Sum
+import string,random
+from django.dispatch import receiver
 from django.contrib.auth.models import User
-
+from django.db.models.signals import post_save,post_delete,pre_save
 
 class Slider(models.Model):
     image = models.ImageField()
@@ -27,10 +29,13 @@ class Investor(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='projects',blank=True,null=True)
+    pre_description = models.TextField(blank=True,null=True)
     description = models.TextField()
     fund_needed = models.BigIntegerField()
     is_completed = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=False)
+    slug = models.CharField(blank=True,null=True,max_length=200)
+
 
     def __str__(self):
         return self.name
@@ -46,6 +51,19 @@ class Project(models.Model):
 
     def donors_count(self):
        return Fund.objects.filter(project_id=self.id).count()
+
+
+@receiver(post_save,sender=Project)
+def Project_customID(sender,instance,**kwargs):
+    if not instance.slug:
+        Strings = string.ascii_uppercase + string.ascii_lowercase
+        newiD = 'P-' + ''.join(random.choice(Strings) for object in Strings)[:12]
+        while Project.objects.filter(slug=newiD).exists():
+            newiD = 'P-' + ''.join(random.choice(Strings) for object in Strings)[:12]
+        instance.slug = newiD
+        instance.save()
+
+
 
 
 class FeaturedProjects(models.Model):

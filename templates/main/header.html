@@ -10,6 +10,11 @@
             <div id="side-panel-trigger" class="side-panel-trigger"><a href="#"><i class="fa fa-bars font-24 text-gray"></i></a></div>
             <ul class="menuzord-menu">
               <li class="active"><a href="#home">Home</a>
+                {% if request.user.is_authenticated %}
+                    <li class=""><a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <li class=""><a href="{% url 'login' %}">Login</a>
+                {% endif %}
                 <!---
                   <ul class="dropdown">
                   <li><a href="#">Multipage Layout</a>

@@ -1,0 +1,232 @@
+{% extends 'main/base.html' %}
+{% load static customtags %}
+{% load static %}
+{% block content %}
+{% include 'main/side_menu.html' %}
+{% include 'main/header.html' %}
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider">
+      <div class="container pt-30 pb-30">
+        <!-- Section Content -->
+        <div class="section-content text-center">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider: Partners & Donors -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-9">
+            <div class="upcoming-events media bg-light p-15 pb-60 mb-50 mb-sm-30">
+              <div class="thumb">
+                <img class="img-fullwidth" src="{{ project.image.url }}" alt="...">
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="mt-30">
+                    <h4 class="media-heading text-uppercase font-weight-500">{{ project.name }}</h4>
+                    <p class="mb-20">{{ project.description }}</p>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="event-count causes clearfix p-15 mt-15 border-left">
+                    <div class="progress-item mt-20 mb-30">
+                      <div class="progress mb-30">
+                        <div class="progress-bar appeared"
+                             data-percent="{% scale_percentage project.funds_collected project.fund_needed %}"
+                             style="width: {% scale_percentage project.funds_collected project.fund_needed %}%;">
+                            <span class="percent">{% scale_percentage project.funds_collected project.fund_needed %}%</span></div>
+                      </div>
+                    </div>
+                    <ul class="list-inline clearfix">
+                      <li class="pull-left pr-0">Raised: ${{ project.funds_collected }}</li>
+                      <li class="pull-right pr-0"><i class="fa fa-heart-o text-theme-colored"></i>
+                          {{ project.donors_count }} Donors</li>
+                    </ul>
+                    <div class="mt-10">
+                      <ul class="pull-left list-inline mt-20">
+                        <li class="text-theme-colored pr-0">Goal: ${{ project.fund_needed }}</li>
+                      </ul>
+                      <a href="#" class="btn btn-dark btn-flat btn-sm pull-right mt-15">Donate</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="event-details">
+                {{ project.description }}
+              </div>
+            </div>
+            <h3 class="mt-0 text-gray">Featured Causes</h3>
+            <div class="gallery-list-carosel owl-nav-top owl-carousel owl-theme owl-loaded">
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-862.998px, 0px, 0px); transition: all 0s ease 0s; width: 3020.49px;"><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item active" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div><div class="owl-item cloned" style="width: 128.833px; margin-right: 15px;"><div class="item">
+                  <a href="#">
+                    <img alt="" src="http://placehold.it/155x106">
+                  </a>
+                </div></div></div></div>
+                <div class="owl-controls">
+                    <div class="owl-nav">
+                        <div class="owl-prev" style="">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="owl-next" style="">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <div class="owl-dots" style="display: none;"></div>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <div class="sidebar sidebar-right mt-sm-30">
+              <div class="widget">
+                <h5 class="widget-title line-bottom">Search box</h5>
+                <div class="search-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" placeholder="Click to Search" class="form-control search-input">
+                      <span class="input-group-btn">
+                      <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="widget">
+                <h5 class="widget-title line-bottom">Categories</h5>
+                <div class="categories">
+                  <ul class="list list-border angle-double-right">
+                    <li><a href="#">Creative<span>(19)</span></a></li>
+                    <li><a href="#">Portfolio<span>(21)</span></a></li>
+                    <li><a href="#">Fitness<span>(15)</span></a></li>
+                    <li><a href="#">Gym<span>(35)</span></a></li>
+                    <li><a href="#">Personal<span>(16)</span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget">
+                <h5 class="widget-title line-bottom">Latest News</h5>
+                <div class="latest-posts">
+                  <article class="post media-post clearfix pb-0 mb-10">
+                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
+                    <div class="post-right">
+                      <h5 class="post-title mt-0"><a href="#">Sustainable Construction</a></h5>
+                      <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
+                    </div>
+                  </article>
+                  <article class="post media-post clearfix pb-0 mb-10">
+                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
+                    <div class="post-right">
+                      <h5 class="post-title mt-0"><a href="#">Industrial Coatings</a></h5>
+                      <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
+                    </div>
+                  </article>
+                  <article class="post media-post clearfix pb-0 mb-10">
+                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
+                    <div class="post-right">
+                      <h5 class="post-title mt-0"><a href="#">Storefront Installations</a></h5>
+                      <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="widget">
+                <h5 class="widget-title line-bottom">Photos from Flickr</h5>
+                <div id="flickr-feed" class="clearfix">
+                  <!-- Flickr Link -->
+                  <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">
+                  </script><!-- DEVELOPER WARNING: The Flickr badge code is likely to be deprecated, and we recommend changing to a new method to embed photo as soon as possible.  See https://www.flickr.com/api for information on how to access Flickr data. Thanks. --><div class="flickr_badge_image" id="flickr_badge_image1"><a href="https://www.flickr.com/photos/we-are-envato/15647274066/"><img src="https://live.staticflickr.com/3940/15647274066_2ee48c3fe9_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image2"><a href="https://www.flickr.com/photos/we-are-envato/15485436268/"><img src="https://live.staticflickr.com/3945/15485436268_846ccca178_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image3"><a href="https://www.flickr.com/photos/we-are-envato/15668911091/"><img src="https://live.staticflickr.com/3956/15668911091_4ef20118b5_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image4"><a href="https://www.flickr.com/photos/we-are-envato/15484954949/"><img src="https://live.staticflickr.com/5605/15484954949_a4e97a9dc5_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image5"><a href="https://www.flickr.com/photos/we-are-envato/15647103116/"><img src="https://live.staticflickr.com/7490/15647103116_1e4b9033f0_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image6"><a href="https://www.flickr.com/photos/we-are-envato/15668909741/"><img src="https://live.staticflickr.com/5599/15668909741_eaf3db4054_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image7"><a href="https://www.flickr.com/photos/we-are-envato/15670834825/"><img src="https://live.staticflickr.com/7544/15670834825_5f55bb7e4e_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image8"><a href="https://www.flickr.com/photos/we-are-envato/15485435298/"><img src="https://live.staticflickr.com/3946/15485435298_7848e85e0a_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image9"><a href="https://www.flickr.com/photos/we-are-envato/15647100406/"><img src="https://live.staticflickr.com/3937/15647100406_34599445cf_s.jpg" alt="A photo on Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><span style="position:absolute;left:-999em;top:-999em;visibility:hidden" class="flickr_badge_beacon"><img src="https://geo.yahoo.com/p?s=792600102&amp;t=5f46286394b0c18d0e24b905c91443f9&amp;fl_ev=0&amp;lang=en&amp;intl=us" width="0" height="0" alt=""></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

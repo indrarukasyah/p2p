@@ -8,3 +8,10 @@ def homepage(request):
     data = {"slides":slides,'featured_projects':featured_projects,'projects':projects}
     return render(request,'main/index.html',data)
 
+
+
+
+def project_detail(request,slug):
+    project = Project.objects.get(slug=slug)
+    data = {'project':project}
+    return render(request,'main/project_detail.html',data)
