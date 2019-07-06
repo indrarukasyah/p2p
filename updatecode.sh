@@ -7,7 +7,7 @@ cd "$DEPLOYDIR"; GIT_WORK_TREE="$DEPLOYDIR" git pull;
 echo "[log] - Finished code update "
 
 echo "[log] - Activating virtualEnv"
-cd "$ENVIRONMENT"; source p2penv/env/bin/activate; cd -
+cd "$ENVIRONMENT"; source p2penv/bin/activate; cd -
 echo "[log] - Finished activating virtualenv"
 
 echo "[log] - Pulling down pip dependencies"
