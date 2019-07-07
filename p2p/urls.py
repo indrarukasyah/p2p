@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('p2papp.urls')),
     path('',include('accounts.urls')),
+    path('blog/',include('blog.urls')),
     path('',include('django.contrib.auth.urls')),
 ]
 
