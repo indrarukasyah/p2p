@@ -15,7 +15,12 @@ class Slider(models.Model):
     def __str__(self):
         return str(self.layer_one)
 
+class Sponsor(models.Model):
+    name = models.CharField(max_length=200,blank=True,null=True)
+    image = models.ImageField(upload_to='sponsors')
 
+    def __str__(self):
+        return self.name
 
 class Investor(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
@@ -82,3 +87,7 @@ class Fund(models.Model):
 
     def __str__(self):
         return self.invester.user.username
+
+
+
+

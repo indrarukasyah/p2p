@@ -1,7 +1,9 @@
 .kt-portlet.kt-portlet--height-fluid.Authentication.and.Authorization {
     max-height: 200px;
 }
-
+.kt-portlet.kt-portlet--height-fluid{
+    height: auto;
+}
 .kt-list-timeline .kt-list-timeline__items:before {
     background-color: #ffffff;
 }

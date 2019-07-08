@@ -270,7 +270,16 @@
                   <li class="text-theme-colored pull-right pr-0">Goal: ${{ featured.project.fund_needed }}</li>
                 </ul>
                 <div class="mt-10">
-                 <a class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10" href="#">Donate</a>
+                    {% if request.user.is_authenticated %}
+                    <a class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10" href="#">
+                     Donate
+                    </a>
+                    {% else %}
+                        <a class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10"
+                           href="{% url 'login' %}">
+                     Donate
+                    </a>
+                    {% endif %}
                  <div class="pull-right mt-15"><i class="fa fa-heart-o text-theme-colored"></i>
                      {{ featured.project.donors_count }} Donors</div>
                 </div>
@@ -391,7 +400,14 @@
 
                   <div class="col-sm-2">
                     <div class="form-group mb-20">
+                        {% if request.user.is_authenticated %}
                       <button type="submit" class="btn btn-flat btn-dark mt-10 p-10 pl-30 pr-30 mt-30" data-loading-text="Please wait...">Donate Now</button>
+                        {% else %}
+                            <a href="{% url 'login' %}">
+                            <button type="button" class="btn btn-flat btn-dark mt-10 p-10 pl-30 pr-30 mt-30"
+                                    >Donate Now</button>
+                            </a>
+                        {% endif %}
                     </div>
                   </div>
                 </div>
@@ -630,6 +646,7 @@
 
     -->
     <!-- divider: Became a Volunteers -->
+  <!--
     <section class="divider parallax layer-overlay overlay-deep" data-stellar-background-ratio="0.5" data-bg-img="http://placehold.it/1920x1280">
       <div class="container">
         <div class="section-content">
@@ -649,7 +666,7 @@
         </div>
       </div>
     </section>
-
+--->
     <!-- Section: News -->
     <section>
       <div class="container pt-70">
@@ -667,141 +684,51 @@
         <div class="row">
           <div class="col-md-12">
             <div class="news-carousel owl-nav-top mb-sm-80" data-dots="true">
+            {% for post in recent_posts %}
               <div class="item">
                 <article class="post clearfix maxwidth600 mb-sm-30">
                   <div class="entry-header">
-                    <div class="post-thumb thumb"> <img src="http://placehold.it/360x220" alt="" class="img-responsive img-fullwidth"> </div>
+                    <div class="post-thumb thumb"> <img src="{{ post.featured_image.url }}" alt="" class="img-responsive img-fullwidth"> </div>
                     <div class="entry-meta meta-absolute text-center pl-15 pr-15">
                     <div class="display-table">
                       <div class="display-table-cell">
                         <ul>
-                          <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                          <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
+                          <li>
+                              <a class="text-white" href="#">
+                                  <i class="fa fa-thumbs-o-up">
+                                  </i> 265 <br> Likes</a></li>
+                          <li class="mt-20">
+                              <a class="text-white" href="#">
+                                  <i class="fa fa-comments-o"></i>
+                                  72
+                                  <br>
+                                  comments</a></li>
                         </ul>
                       </div>
                     </div>
                     </div>
                   </div>
                   <div class="entry-content border-1px p-20">
-                    <h5 class="entry-title mt-0 pt-0"><a href="#">Sponsor a child today</a></h5>
-                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
+                    <h5 class="entry-title mt-0 pt-0"><a href="#">
+                        {{ post.title|truncatechars:"40" }}</a>
+                    </h5>
+                    <p class="text-left mb-20 mt-15 font-13">
+                        {{ post.content|truncatechars:"50" }}
+                    </p>
+                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">
+                        Read more</a>
                     <ul class="list-inline entry-date pull-right font-12 mt-5">
-                      <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                      <li><span class="text-theme-colored">Nov 13, 2015</span></li>
+                      <li><a class="text-theme-colored" href="#">
+                          {{ post.author.user.username }} |
+                          <span class="text-theme-colored">{{ post.created_on }}</span>
+                      </a>
+                      </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                 </article>
               </div>
-              <div class="item">
-                <article class="post clearfix maxwidth600 mb-sm-30">
-                  <div class="entry-header">
-                    <div class="post-thumb thumb"> <img src="http://placehold.it/360x220" alt="" class="img-responsive img-fullwidth"> </div>
-                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                    <div class="display-table">
-                      <div class="display-table-cell">
-                        <ul>
-                          <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                          <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="entry-content border-1px p-20">
-                    <h5 class="entry-title mt-0 pt-0"><a href="#">Sponsor a child today</a></h5>
-                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                      <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                      <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                </article>
-              </div>
-              <div class="item">
-                <article class="post clearfix maxwidth600 mb-sm-30">
-                  <div class="entry-header">
-                    <div class="post-thumb thumb"> <img src="http://placehold.it/360x220" alt="" class="img-responsive img-fullwidth"> </div>
-                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                    <div class="display-table">
-                      <div class="display-table-cell">
-                        <ul>
-                          <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                          <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="entry-content border-1px p-20">
-                    <h5 class="entry-title mt-0 pt-0"><a href="#">Sponsor a child today</a></h5>
-                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                      <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                      <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                </article>
-              </div>
-              <div class="item">
-                <article class="post clearfix maxwidth600 mb-sm-30">
-                  <div class="entry-header">
-                    <div class="post-thumb thumb"> <img src="http://placehold.it/360x220" alt="" class="img-responsive img-fullwidth"> </div>
-                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                    <div class="display-table">
-                      <div class="display-table-cell">
-                        <ul>
-                          <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                          <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="entry-content border-1px p-20">
-                    <h5 class="entry-title mt-0 pt-0"><a href="#">Sponsor a child today</a></h5>
-                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                      <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                      <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                </article>
-              </div>
-              <div class="item">
-                <article class="post clearfix maxwidth600 mb-sm-30">
-                  <div class="entry-header">
-                    <div class="post-thumb thumb"> <img src="http://placehold.it/360x220" alt="" class="img-responsive img-fullwidth"> </div>
-                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                    <div class="display-table">
-                      <div class="display-table-cell">
-                        <ul>
-                          <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                          <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="entry-content border-1px p-20">
-                    <h5 class="entry-title mt-0 pt-0"><a href="#">Sponsor a child today</a></h5>
-                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                      <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                      <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                </article>
-              </div>
+            {% endfor %}
             </div>
           </div>
         </div>
@@ -809,19 +736,19 @@
     </section>
 
     <!-- Divider: Partners & Donors -->
-    <section class="divider parallax layer-overlay overlay-deep" data-stellar-background-ratio="0.5" data-bg-img="http://placehold.it/1920x1280">
+    <section class="divider parallax layer-overlay overlay-deep" data-stellar-background-ratio="0.5" data-bg-img="{% static 'custom_images/help.jpg' %}">
       <div class="container pt-30 pb-30">
         <div class="row">
           <div class="col-md-12">
             <div class="clients-logo carousel">
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/150x120" alt=""></a> </div>
+                {% for sponsor in sponsors %}
+                <div class="item">
+                    <a href="#">
+                        <img src="{{ sponsor.image.url }}" alt="{{ sponsor.name }}">
+                    </a>
+
+                </div>
+                {% endfor %}
             </div>
           </div>
         </div>
@@ -875,27 +802,15 @@
           <div class="widget dark">
             <h5 class="widget-title line-bottom">Latest News</h5>
             <div class="latest-posts">
+              {% for post in recent_posts %}
               <article class="post media-post clearfix pb-0 mb-10">
-                <a class="post-thumb" href="#"><img src="https://placehold.it/80x55" alt=""></a>
+                <a class="post-thumb" href=""><img src="{{ post.featured_image.url }}" alt=""></a>
                 <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
-                  <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                  <h5 class="post-title mt-0 mb-5"><a href="#">{{ post.title }}</a></h5>
+                  <p class="post-date mb-0 font-12">{{ post.created_on }}</p>
                 </div>
               </article>
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a class="post-thumb" href="#"><img src="https://placehold.it/80x55" alt=""></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
-                  <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                </div>
-              </article>
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a class="post-thumb" href="#"><img src="https://placehold.it/80x55" alt=""></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
-                  <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                </div>
-              </article>
+                {%  endfor %}
             </div>
           </div>
         </div>
